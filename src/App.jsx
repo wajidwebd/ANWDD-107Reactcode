@@ -7,9 +7,17 @@ import { Useeffectfile } from './Useeffectfile';
 import { createContext, useEffect, useState } from 'react'
 import { Librarayuse } from './Librarayuse'
 import { Projectone } from './Projectone'
+import { Usememoconcept } from './Usememoconcept'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Home } from './Home'
+import { Product } from './Product'
+import { Cart } from './Cart'
+import { Navbarsh } from './Navbarsh'
 export const Datapass = createContext();
 
 function App() {
+
+  const [cartdata,setCartdata] = useState([])
 
   // React : Concept -> what is react? ->
   // 1. React is the javascript library.
@@ -58,6 +66,8 @@ function App() {
   // }
   // }
   
+
+  
   return (
     <>
       <h4 className='text-center'>app</h4> 
@@ -81,7 +91,17 @@ function App() {
       {/* {myname == "rohith" ? "Developer" : myname == "kaliyaperumal" ? "Developer" : "not developer" } */}
       {/* {dataforsecenario} */}
       {/* <Librarayuse></Librarayuse> */}
-      <Projectone></Projectone>
+      {/* <Projectone></Projectone> */}
+      {/* <Usememoconcept></Usememoconcept> */}
+      <BrowserRouter>
+      <Routes>
+        <Route element={<Navbarsh></Navbarsh>}>
+          <Route path='/' element={<Home></Home>}></Route>
+          <Route path='/rohith' element={<Product cartdata={cartdata} setCartdata={setCartdata}></Product>}></Route>
+          <Route path='/darani' element={<Cart cartdata={cartdata} setCartdata={setCartdata}></Cart>}></Route>
+        </Route>
+      </Routes>
+      </BrowserRouter>
     </>
   )
 }
