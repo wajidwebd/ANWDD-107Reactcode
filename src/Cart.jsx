@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export const Cart = ({cartdata,setCartdata}) => {
 
-  const [price,setPrice] = useState(0)
+  const [price,setPrice] = useState(0);
+
+
+  useEffect(()=>{
+    let amt = 0;
+    cartdata.map((ddd)=> amt = ddd.price*ddd.count + amt)
+    setPrice(amt)
+  },[cartdata])
 
   function removeprogram(params) {
     const removeddata = cartdata.filter((values)=> values.id !== params.id);
@@ -14,10 +21,13 @@ export const Cart = ({cartdata,setCartdata}) => {
     const particulardata = cartdata.indexOf(params)
     console.log(particulardata);
     cartdata[particulardata].count = cartdata[particulardata].count + countdown;
-    setCartdata([...cartdata])
-    
-    
+    setCartdata([...cartdata])  
   }
+
+
+
+
+
   return (
     <div>
         {
@@ -34,7 +44,7 @@ export const Cart = ({cartdata,setCartdata}) => {
         </div>
         )
       }
-      {price}
+     <h2>Total Price:  {price}</h2>
       <Link to='/rohith'>Back</Link>
     </div>
   )

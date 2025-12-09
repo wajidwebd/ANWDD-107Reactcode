@@ -13,6 +13,8 @@ import { Home } from './Home'
 import { Product } from './Product'
 import { Cart } from './Cart'
 import { Navbarsh } from './Navbarsh'
+import { Zustandtopic } from './Zustandtopic'
+import { Testingfile } from './Testingfile'
 export const Datapass = createContext();
 
 function App() {
@@ -93,7 +95,7 @@ function App() {
       {/* <Librarayuse></Librarayuse> */}
       {/* <Projectone></Projectone> */}
       {/* <Usememoconcept></Usememoconcept> */}
-      <BrowserRouter>
+      {/* <BrowserRouter>
       <Routes>
         <Route element={<Navbarsh></Navbarsh>}>
           <Route path='/' element={<Home></Home>}></Route>
@@ -101,7 +103,9 @@ function App() {
           <Route path='/darani' element={<Cart cartdata={cartdata} setCartdata={setCartdata}></Cart>}></Route>
         </Route>
       </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <Zustandtopic></Zustandtopic>
+      <Testingfile></Testingfile>
     </>
   )
 }
